@@ -11,7 +11,7 @@ dotenv.config({
 });
 var myport = {PORT: process.env.PORT||3000};    
     console.log(myport.PORT);
-    express.static.mime.define({'application/wasm': ['wasm']})
+
 app = express();
 app.set('view engine', 'hbs');
 app.set('views',path.join(__dirname, '/views'));
