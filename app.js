@@ -18,8 +18,14 @@ app.use(bodyParser.urlencoded({
 })); //express uses bodyparser
 
 app.use(express.static(path.join(__dirname, '/')));
+app.get('/*.glb', function (req, res){   
+    console.log(req.path);
+    res.sendFile(__dirname+req.path);
+
+});
 app.get('/', function (req, res){   
-    res.send("Hi! This is server end");
+    console.log(req.body);
+    res.send("Hi from front end");
 
 });
 app.post('/saveresponse',cors(), async function(req,res){
