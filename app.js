@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, '/')));
 app.get('/*.glb', cors(), function (req, res){   
     console.log(req.path);
     const glbFile = fs.readFileSync(__dirname+req.path);
+    res.setHeader('Content-Type', 'model/gltf-binary');
     res.set('Content-Type', 'model/gltf-binary');
 
     res.send(glbFile);
