@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
 })); //express uses bodyparser
 
 app.use(express.static(path.join(__dirname, '/')));
-app.get('/*.glb', function (req, res){   
+app.get('/*.glb', cors(), async function (req, res){   
     console.log(req.path);
     res.sendFile(__dirname+req.path);
 
