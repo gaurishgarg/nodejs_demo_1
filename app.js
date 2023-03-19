@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const path = require('path');
 const cors = require('cors');
+const fs = require('fs');
 
 var x = 5;
 dotenv.config({
@@ -19,9 +20,16 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, '/')));
-app.get('/*.glb', cors(), async function (req, res){   
+app.get('/*.glb', cors(), function (req, res){   
     console.log(req.path);
-    res.sendFile(__dirname+req.path);
+    const glbFile = fs.readFileSync(__dirname+req.path);
+    res.set('Content-Type', 'model/gltf-binary');
+
+    res.send(glbFile);
+
+});
+app.get("/assets",cors(),async function(req,res){
+
 
 });
 app.get('/', function (req, res){   
