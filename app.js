@@ -16,6 +16,7 @@ app = express();
 app.use(bodyParser.urlencoded({
     extended: true
 })); //express uses bodyparser
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, '/')));
 app.get('/*.glb', cors(), async function (req, res){   
